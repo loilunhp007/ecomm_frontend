@@ -1,0 +1,50 @@
+<div class="main fix">
+<div class="chart2 ">
+    <div class="row">
+        <ol class="breadcrumb mt-1">
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="active">Thống kê bán hàng</li>
+        </ol>
+    </div><!--/.row-->
+	<div class="row" style="height: 500px">
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Đơn hàng hôm nay</div>
+				<div class="panel-body">
+					<div style="width: 100%; height: 500px">
+
+						<canvas async id="myChart1" width="400" height="400"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading" >Tổng sản phẩm bán ra trong tháng </div>
+				<div class="panel-body">
+					<div style="width: 100%; height: 500px">
+						<select [(ngModel)]="select2" id="selectthang_02" name="selectthang_02" (change)="selected2(select2)">
+							<option *ngFor="let month of months" [value]="month.name">Tháng {{month.name}}</option>
+						</select>
+						 <canvas  id="myChart2" width="400" height="400"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Thống kê doanh thu trong tháng</div>
+				<div class="panel-body">
+					<div style="width: 100%; height: 500px">
+						<select [(ngModel)]="select" id="selectthang_01" name="selectthang_01" (change)="selected(select)">
+							<option *ngFor="let month of months" [value]="month.name">Tháng {{month.name}}</option>
+						</select>
+						 <canvas   id="myChart3" width="400" height="400"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="main fix">
+<div class="breadcrumb">
+    <span><a href="../index.html">Home</a></span><span> / </span><span>Manager</span><span> / </span><span>Quản lý User</span>
+</div>
+<div class="section">
+    <div id="search">
+        <form action="" method="get">
+            <input type="text" name="key" value=""[(ngModel)]="searchText" placeholder="Nhập khách hàng cần tìm" />     
+            <button type="submit" name="xem" value="search" >Tìm kiếm</button>
+        </form>
+    </div>
+<table id="table-user">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Họ Tên</th>
+            <th>Địa Chỉ</th>
+            <th>SĐT</th>
+            <th>Email</th>
+            <th>Thời gian tạo</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users|filter : searchText| paginate:{itemsPerPage:8,currentPage:p};let i=index">
+            <td>{{i+1}}</td>
+            <td>{{user.firstname+user.lastname}}</td>
+            <td>{{user.address|truncate:[6]}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.gmail}}</td>
+            <td *ngFor="let day of days.slice(i,i+1)">{{ day }} ngày trước</td>
+            <td><span *ngIf="user.state=='1'">Đang hoạt động</span><span *ngIf="user.state=='0'">Khóa</span></td>
+            <td *ngIf="type==1||type==4"><button type ="button" class="btn-table" (click)="deleteUserDetail(user)"><fa-icon [icon]="faTrash"></fa-icon></button>
+               <!-- <button type="button" class="btn-table" *ngIf="user.state==1"(click)="blockUserCheck(user)"><fa-icon [icon]="faLock"></fa-icon></button>
+                <button type="button" class="btn-table" *ngIf="user.state==0" (click)="blockUserCheck(user)"><fa-icon [icon]="faUnLock"></fa-icon></button>-->
+            </td>
+            <td *ngIf="type!=4||type!=1">
+
+            </td>
+        </tr>    
+    </tbody>
+</table>
+</div>
+</div>

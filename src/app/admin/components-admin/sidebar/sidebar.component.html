@@ -1,0 +1,10 @@
+  <div class="left-menu">
+        <a class="left-menu__item"  [routerLink]="['/admin/thongke']" routerLinkActive="active"><span id="speed-icon"></span>Thống kê</a>
+        <a class="left-menu__item" [routerLink]="['/admin/sanpham']" routerLinkActive="active"><span class="icon" id="product-icon"></span>Quản lý sản phẩm</a>
+        <a class="left-menu__item" *ngIf="isAdmin" [routerLink]="['/admin/account']" routerLinkActive="active"><span class="icon" id="danh-muc-icon"></span>Quản lý Tài Khoản</a>
+        <a class="left-menu__item" [routerLink]="['/admin/khachhang']" routerLinkActive="active"><span class="icon" id="user-icon"></span>Quản lý khách hàng</a>
+        <a class="left-menu__item" [routerLink]="['/admin/donhang']" routerLinkActive="active"><span class="icon" id="don-hang-icon"></span>Quản lý đơn hàng</a>
+        <a class="left-menu__item" [routerLink]="['/admin/danhmuc']" routerLinkActive="active"><span class="icon" id="danh-muc-icon"></span>Quản lý danh mục</a>
+        <a class="left-menu__item" [routerLink]="['/admin/kho']" routerLinkActive="active"><span class="icon" id="danh-muc-icon"></span>Quản lý Kho</a>
+        <a class="left-menu__item" *ngIf="isAdmin||isManager"  [routerLink]="['/admin/nhanvien']" routerLinkActive="active"><span class="icon" id="user-icon"></span>Quản lý Nhân viên</a>
+    </div>

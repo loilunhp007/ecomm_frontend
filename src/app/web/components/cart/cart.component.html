@@ -1,0 +1,138 @@
+
+ <div class="clearfix">
+      </div>
+      <div class="container_fullwidth">
+        <div class="container shopping-cart">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="title">
+                Shopping Cart
+              </h3>
+              <div class="clearfix">
+              </div>
+              <table class="shop-table cart_info">
+                <thead>
+                  <tr>
+                    <th>
+                      Image
+                    </th>
+                    <th>
+                      Details
+                    </th>
+                    <th>
+                      Price
+                    </th>
+                    <th>
+                      Quantity
+                    </th>
+                    <th>
+                      Price
+                    </th>
+                    <th>
+                      Delete
+                    </th>
+                    <th *ngIf="!buy"> Status</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="cartLength>0">
+                  <tr  *ngFor="let cart of carts" >
+                    <td *ngFor="let img of cart.product.images.slice(0,1)">
+                      <img src="../../../../assets/images/products/{{img}}" alt="">
+                    </td>
+                    <td>
+                      <div class="shop-details">
+                        <div class="productname">
+                          {{cart.product.productName}}
+                        </div>
+                        <p>
+                          <img alt="" src="../../../../assets/images/star.png">
+                          <a class="review_num" href="#">
+                            02 Review(s)
+                          </a>
+                        </p>
+                        
+                        <p>
+                          Product Code : 
+                          <strong class="pcode">
+                            {{cart.product.productID}}
+                          </strong>
+                        </p>
+                      </div>
+                    </td>
+                    <td>
+                      <h5 *ngIf="cart.product.percent_discount>0 && date2 >= cart.product.special_from_time && date2 <= cart.product.special_to_time">
+                        {{cart.product.price *(100-cart.product.percent_discount)/100|currency:'VND':'symbol':'3.0'}}
+                      </h5>
+                      <h5 *ngIf="(cart.product.percent_discount==0||date2 < cart.product.special_from_time || date2 > cart.product.special_to_time)">
+                        {{cart.product.price|currency:'VND':'symbol':'3.0'}}
+                      </h5>
+                    </td>
+                    <td>
+                    <div class="cart_quantity_button">
+                        <a class="cart_quantity_down" (click)="minusCart(cart.product.productID)">-</a>
+                        <input  type="number"value="{{cart.soluong}}"  name="quantity" autocomplete="on" size="2" class="cart_quantity_input" (change)="onChange($event,cart)" >
+                        <a class="cart_quantity_up" (click)="plusCart(cart.product.productID)">+</a>
+                      </div>
+                    </td>
+                    <td>
+                      <h5>
+                        <strong class="red" *ngIf="cart.product.percent_discount>0 && date2 >= cart.product.special_from_time && date2 <= cart.product.special_to_time">
+                          {{cart.product.price*(100-cart.product.percent_discount)/100*cart.soluong|currency:'VND':'symbol':'3.0'}}
+                        </strong>
+                        <strong class="red" *ngIf="(cart.product.percent_discount==0||date2 < cart.product.special_from_time || date2 > cart.product.special_to_time) ">
+                          {{cart.product.price*cart.soluong}}
+                        </strong>
+                      </h5>
+                    </td>
+                    <td>
+                      <a href="">
+                        <img src="../../../../assets/images/remove.png" alt="" (click)="deleteCartItem(cart.product)">
+                      </a>
+                    </td>
+                    <td *ngIf="cart.product.state==0">Sản phẩm hiện không có sẵn</td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="cartLength==0"><tr><td>Cart rỗng</td></tr></tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="6">
+                      <button class="pull-left" >
+                        Continue Shopping
+                      </button>
+                      <button class=" pull-right">
+                        Update Shopping Cart
+                      </button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="clearfix">
+              </div>
+              <div class="row">
+                    <h5>
+                      Estimate Shipping And Tax
+                    </h5>
+                    
+                <div class="col-md-4 col-sm-6">
+                  <div class="shippingbox">
+                    <div class="grandtotal">
+                      <h5>
+                        GRAND TOTAL 
+                      </h5>
+                      <span>
+                          {{cartTotal|currency:'VND':'symbol':'3.0'}}
+                      </span>
+                    </div>
+                    <button (click)="goCheckOut()" [disabled]="cartLength<=0||!buy">
+                      Process To Checkout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix">
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>

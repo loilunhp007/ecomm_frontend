@@ -1,0 +1,92 @@
+<div class="main">
+    
+    <div class="dhct">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+            <h4 class="mb-2 text-primary bor">Đơn hàng của tôi</h4>
+        </div>
+        
+        <table id="table-dh">
+            <thead>
+                <tr>
+                    <th colspan="9">DANH SÁCH ĐƠN HÀNG</th>
+                </tr>
+                <tr>
+                    <th>Mã HD</th>
+                    <th>Thời Điểm Đặt Hàng</th>
+                    <th>Tổng Tiền</th>
+                    <th>Tình Trạng</th>
+                    <th>Chi tiết</th>
+                    <th>Yêu cầu</th>
+                </tr>
+            </thead>
+            <tbody id = "tinhtranghd" >
+                <tr *ngFor="let order of orders | paginate:{itemsPerPage:8,currentPage:p}">
+                    <td data-sortable="true">{{order.orderID}}</td>
+                    <td data-sortable="true">{{order.startTime|date:"yyyy-MM-dd"}}</td>
+                    <td data-sortable="true">{{order.total|currency:'VND':'symbol':'3.0'}}</td>
+                    <td data-sortable="true" *ngIf="order.state=='1'">
+                            Chờ xác nhận
+                    </td>
+                    <td data-sortable="true" *ngIf="order.state=='0'">
+                            Đã Hủy
+                    </td>
+                    <td data-sortable="true" *ngIf="order.state=='2'">
+                            Chuẩn bị hàng
+                    </td>
+                    <td data-sortable="true" *ngIf="order.state=='3'">
+                            Giao hàng
+                    </td>
+                    <td data-sortable="true" *ngIf="order.state=='4'">
+                            Đã giao hàng
+                    </td>
+                    <td data-sortable="true" *ngIf="order.state=='5'">
+                        Yêu cầu hủy
+                </td>
+                    <td data-sortable="true">
+                     <a class="link" (click)="popup_themsp();getOrderDetail(order)">
+                    <span class="glyphicon glyphicon-list-alt"></span>Xem Chi Tiết</a></td>
+                    <td data-sortable="true">
+                    <button  class="btn-table" [disabled]="!order.state==1||!order.state==2 ||order.state==4||order.state==5"   (click)="updateOrderCancel(order)"><i class="fa fa-trash"></i> Hủy Đơn</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="popup-cthd" *ngIf="!isToggle">
+	<div class="popup-themsp__content" >
+		<div class="popup-themsp__title">Chi Tiết Đơn Hàng</div>
+        <div>
+            <h5>Thời gian đặt hàng: {{order.startTime}}</h5>
+            <h5>Tổng tiền {{order.total|currency:'VND':'symbol':'3.0'}}</h5>
+            <h5>Địa chỉ giao hàng: {{details.deliveryAddress}}</h5>
+            <h5>Địa chỉ nhận hàng {{details.destination}}</h5>
+            <h5>Đơn vị vận chuyển:{{details.transport.name}}-{{details.transport.fee|currency:'VND':'symbol':'3.0'}}</h5>
+        </div>
+                <table id="table-dh">
+                    <thead>
+                        <tr>
+                            <th>Mã HĐ</th>
+                            <th>Tên Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>	
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr *ngFor="let detail of orderdetails ">
+                            <td data-sortable="true">{{detail.orderID}}</td>
+                            <td data-sortable="true">{{detail.product.productName}}</td>
+                            <td data-sortable="true">{{detail.price|currency:'VND':'symbol':'3.0'}}</td>
+                            <td data-sortable="true">{{detail.quantity}}</td>
+                            <td data-sortable="true">{{detail.price*detail.quantity|currency:'VND':'symbol':'3.0'}}</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+				
+				<span class="back" onclick="close_popup_cthd()">&times;</span>
+    </div>   
+</div> 
+		

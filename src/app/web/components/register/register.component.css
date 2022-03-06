@@ -1,0 +1,28 @@
+.registerForm {
+    padding: 30px 80px 80px 80px;
+    position: relative;
+    top: 25%;
+    left: 50%;
+    width: 500px;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 50px;
+  }
+  input{
+    border-radius: 10px;
+  }
+  .card-header{
+    font-size: 45px;
+    text-align: center;
+    padding-bottom: 15px;
+  }
+  .card-footer{
+    text-align: center;
+  }
+  .card-body{
+    font-size: 15px;
+  }
+  .text-muted{
+    color: red;
+  }

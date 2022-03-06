@@ -1,0 +1,86 @@
+<app-slider></app-slider>
+ <div class="container_fullwidth">
+            <div class="container">
+               <div class="hot-products">
+                  <h3 class="title"><strong>Hot</strong> Products</h3>
+                  <div class="control"><a id="prev_hot" class="prev" >&lt;</a><a id="next_hot" class="next">&gt;</a></div>
+                  <ul id="hot">
+                     <li>
+                        <div class="row">
+                           <div class="col-md-3 col-sm-6" *ngFor="let product of hotproducts;let i=index">
+                              <div class="products" *ngIf="i<4">
+                                 <div class="offer" *ngIf="(date2 >= product.special_from_time && date2 <= product.special_to_time)">- {{product.percent_discount}}%</div>
+                                 <div class="offer" *ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)">- 0%</div>
+                                 <div class="thumbnail" ><a (click)="goDetail($event,product)" *ngFor="let img of product.images.slice(0,1)"><img src="../../../../assets/images/products/{{img}}" alt="Product Name" width="220" height="220"></a></div>
+                                 <div class="productname" >{{product.productName}}</div>
+                                 <h4 class="price" *ngIf="date2 >= product.special_from_time && date2 <= product.special_to_time"><span class="old-price">{{product.price|currency:'VND':'symbol':'3.0'}}</span>{{product.price*(100-product.percent_discount)/100|currency:'VND':'symbol':'3.0'}}</h4>
+                                 <h4 class="price" *ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)"> {{product.price|currency:'VND':'symbol':'3.0'}}</h4>
+                                 <div class="button_group"><button class="button add-cart" type="button" (click)="addTocart(product)">Add To Cart</button><button class="button compare" type="button"><i class="fa fa-exchange"></i></button><button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button></div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="row">
+                           <div class="col-md-3 col-sm-6" *ngFor="let product of hotproducts;let i=index">
+                              <div class="products"*ngIf="i>=4&&i<8">
+                                <input type="hidden" id="productID" value={{product.productID}}>
+                                <div class="offer"*ngIf="date2 >= product.special_from_time && date2 <= product.special_to_time">- {{product.percent_discount}}%</div>
+                                <div class="offer"*ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)">- 0%</div>
+                                 <div class="thumbnail"><a (click)="goDetail($event,product)" *ngFor="let img of product.images.slice(0,1)"><img  src="../../../../assets/images/products/{{img}}" alt="Product Name" width="220" height="230"></a></div>
+                                 <div class="productname"  >{{product.productName}}</div>
+                                 <h4 class="price" *ngIf="date2 >= product.special_from_time && date2 <= product.special_to_time"><span class="old-price">{{product.price|currency:'VND':'symbol':'3.0'}}</span>{{product.price*(100-product.percent_discount)/100|currency:'VND':'symbol':'3.0'}}</h4>
+                                 <h4 class="price" *ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)">{{product.price|currency:'VND':'symbol':'3.0'}} </h4>
+                                 <div class="button_group"><button class="button add-cart" type="button" (click)="addTocart(product)">Add To Cart</button><button class="button compare" type="button"><i class="fa fa-exchange"></i></button><button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button></div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="clearfix"></div>
+               <div class="featured-products">
+                  <h3 class="title"><strong>Featured </strong> Products</h3>
+                  <div class="control"><a id="prev_featured" class="prev" >&lt;</a><a id="next_featured" class="next"  >&gt;</a></div>
+                  <ul id="featured">
+                     <li>
+                        <div class="row">
+                          <div class="col-md-3 col-sm-6" *ngFor="let product of products;let i=index">
+                              <div class="products"*ngIf="i<4" >
+                                <input type="hidden" id="productID" value={{product.productID}}>
+                                <div class="offer"*ngIf="date2 >= product.special_from_time && date2 <= product.special_to_time">- {{product.percent_discount}}%</div>
+                                <div class="offer"*ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)">- 0%</div>
+                                 <div class="thumbnail"><a   *ngFor="let img of product.images.slice(0,1)| keyvalue"><img (click)="goDetail($event,product)" src="../../../../assets/images/products/{{img.value}}" alt="Product Name" width="220" height="230"></a></div>
+                                 <div class="productname">{{product.productName}}</div>
+                                 <h4 class="price" *ngIf="date2 >= product.special_from_time && date2 <= product.special_to_time"><span class="old-price">{{product.price|currency:'VND':'symbol':'3.0'}}</span>{{product.price*(100-product.percent_discount)/100|currency:'VND':'symbol':'3.0'}}</h4>
+                                 <h4 class="price" *ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)">{{product.price|currency:'VND':'symbol':'3.0'}} </h4>
+                                 <div class="button_group"><button class="button add-cart" type="button" (click)="addTocart(product)">Add To Cart</button>
+                                 <button class="button compare" type="button"><i class="fa fa-exchange"></i></button>
+                                 <button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="row">
+                           <div class="col-md-3 col-sm-6" *ngFor="let product of products;let i=index">
+                               <div class="products" *ngIf="i>=4&&i<8">
+                                 <input type="hidden" id="productID" value={{product.productID}}>
+                                 <div class="offer"*ngIf="date2 >= product.special_from_time && date2 <= product.special_to_time">- {{product.percent_discount}}%</div>
+                                 <div class="offer"*ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)">- 0%</div>
+                                  <div class="thumbnail"><a   *ngFor="let img of product.images.slice(0,1)| keyvalue"><img src="../../../../assets/images/products/{{img.value}}" (click)="goDetail($event,product)" alt="Product Name" width="220" height="230"></a></div>
+                                  <div class="productname">{{product.productName}}</div>
+                                  <h4 class="price" *ngIf="date2 >= product.special_from_time && date2 <= product.special_to_time"><span class="old-price">{{product.price|currency:'VND':'symbol':'3.0'}}</span>{{product.price*(100-product.percent_discount)/100|currency:'VND':'symbol':'3.0'}}</h4>
+                                  <h4 class="price" *ngIf="(product.percent_discount==0||date2 < product.special_from_time ||date2 > product.special_to_time)"> {{product.price|currency:'VND':'symbol':'3.0'}}</h4>
+                                  <div class="button_group"><button class="button add-cart" type="button" (click)="addTocart(product)">Add To Cart</button>
+                                  <button class="button compare" type="button"><i class="fa fa-exchange"></i></button>
+                                  <button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>    

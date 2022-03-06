@@ -1,0 +1,56 @@
+.sidebar {
+  margin: 40px;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position:static;
+  height: 100%;
+  overflow: auto;
+  float: left;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+.wrapper{
+  background-color: #f1f1f1;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+}
+input{
+  border-radius: 10px;
+}
+.card-header{
+  font-size: 45px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.card-footer{
+  text-align: center;
+}
+.card-body{
+  font-size: 15px;
+}
+.text-muted{
+  color: red;
+}

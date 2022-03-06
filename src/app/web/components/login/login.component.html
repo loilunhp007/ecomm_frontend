@@ -1,0 +1,35 @@
+
+
+  <div class="bg" home>
+    <div class="row loginForm">
+      <div class="col d-flex justify-content-center">
+        <form id="loginForm" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div class="card">
+            <div class="card-header">
+              Login
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="">Email</label>
+                <input type="email" ngModel name="email" id="email" required minlegth = "6" #email="ngModel"
+                class="form-control" placeholder="example@gmail.com" aria-describedby="emailHId">
+                <small id="emailHId" *ngIf="!email?.valid && (email?.dirty || email?.touched)"
+              class="text-muted">Email is invalid or empty</small>
+              </div>
+            <div class="form-group">
+              <label for="">Password</label>
+              <input type="password" ngModel name="password" id="password" #password="ngModel" required minlegth = "6"
+              class="form-control" placeholder="*********" aria-describedby="passwordHId">
+               <small  *ngIf="!password?.valid && (password?.dirty||password?.touched) " id="passwordHId"
+              class="text-muted">Password is invalid or empty</small>
+            </div>
+        </div>
+            <div class="card-footer text-muted">
+              <button class="btn btn-primary text-center"> Login </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>

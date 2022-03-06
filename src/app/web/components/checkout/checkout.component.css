@@ -1,0 +1,23 @@
+#delivery{
+    display: inline-block;
+}
+#delivery select{
+    float: left;
+    margin-left: 0;
+}
+#delivery p{
+    float: left;
+    margin-left: 0;
+}
+#checkoutmethod {
+    display: inline-block;
+    
+}
+#checkoutmethod select{
+    float: left;
+    margin-left: 0;
+}
+#checkoutmethod p{
+    float: left;
+    margin-left: 20%;
+}

@@ -1,0 +1,71 @@
+<div class="row registerForm">
+    <div class="col-6 offset-3">
+      <form id="registerForm"  [formGroup]="registerForm" class="form-horizontal">
+        <div class="card">
+          <div class="card-header">
+            Register
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="">Email</label>
+              <input type="email"  class="form-control" placeholder="example@gmail.com"
+                name="email" id="email" formControlName="regisEmail" aria-describedby="emailHId" >
+              <small id="emailHId" *ngIf="!regisEmail?.valid && (regisEmail?.dirty || regisEmail?.touched)"
+              class="text-muted">Vui lòng nhập đúng Email</small>
+            </div>
+            <div class="form-group">
+              <label for="">Password</label>
+              <input type="password" formControlName="regisPassword" id="password" 
+              class="form-control" placeholder="Password" aria-describedby="passwordHId" >
+              <small  *ngIf="!regisPassword?.valid && ( regisPassword?.dirty|| regisPassword?.touched)" id="passwordHId"
+              class="text-muted">Password yếu hoặc đang trống</small>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4" style="padding-left: 0px;">
+                <label for="">First name</label>
+                <input class="form-control" placeholder="Tên"
+                formControlName="regisFirstName" id="firstName" aria-describedby="nameHId"
+                 required>
+              </div>
+              <div class="col-md-8" style="padding-right: 0px;">
+                <label for="">Last name</label>
+                <input class="form-control" placeholder="Họ"
+                formControlName="regisLastName" id="lastName" aria-describedby="nameHId"
+                 required>
+              </div>
+              <small id="nameHId" *ngIf=" (!regisFirstName?.valid && (regisFirstName?.dirty ||regisFirstName?.touched))
+              || (!regisLastName?.valid && (regisLastName?.dirty || regisLastName?.touched))"
+              class="text-muted">Vui lòng nhập đầy đủ họ tên</small>
+            </div>
+            <div class="form-group">
+              <label for="">Số điện thoại</label>
+              <input class="form-control" placeholder="0-999-999-999"
+              formControlName="regisPhone" id="sdt" aria-describedby="sdtHId"
+              >
+              <small id="sdtHId" *ngIf="!regisPhone?.valid && (regisPhone?.dirty || regisPhone?.touched)"
+              class="text-muted">Vui lòng nhập số điện thoại</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Địa chỉ</label>
+            <input type="" formControlName="regisAddress" id="address" 
+            class="form-control" placeholder="273 An Dương Vương, Phường 3, Quận 5, Thành phố Hồ Chí Minh" aria-describedby="addressHId"
+            required minlength="20">
+            <small  *ngIf="!regisAddress?.valid && (regisAddress?.dirty||regisAddress?.touched)" id="addressHId"
+            class="text-muted">Vui lòng nhập đúng địa chỉ</small>
+          </div>
+          <div class="form-group">
+            <label for="">Ngày sinh</label>
+            <input type="date" formControlName="regisBirthDay" id="birthday"
+            class="form-control" aria-describedby="birthdayHId" required>
+            <small  *ngIf="!regisBirthDay?.valid && (regisBirthDay?.dirty||regisBirthDay?.touched)" id="birthdayHId"
+            class="text-muted">Vui lòng nhập ngày sinh</small>
+          </div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-primary" (click)="registerNewUser()"  [disabled]="regisFirstName.invalid || regisLastName.invalid
+            || regisPhone.invalid || regisEmail.invalid || regisPassword.invalid||regisAddress.invalid||regisBirthDay.invalid"> Đăng ký </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,60 @@
+<div class="main">
+  <div class="container">
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+
+        <div class="card-body">
+            <div class="row gutters cd">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                    <h4 class="mb-2 text-primary bor">Hồ sơ của tôi</h4>
+                </div>
+                <form [formGroup]="userForm" (ngSubmit)="updateUser()">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="firstName">Tên </label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" formControlName="firstName" >
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="lastName">Họ </label>
+                            <input type="text" class="form-control" id="lastName" placeholder=""formControlName="lastName">
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" formControlName="phone">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phone">Dia chi</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Enter phone number" formControlName="address">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="birthDay">Ngày Sinh</label>
+                            <input type="date" class="form-control" id="birthDay"formControlName="birthday">
+                        </div>
+                    </div>
+    
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="eMail">Email</label>
+                            <input type="email" class="form-control" id="eMail" placeholder="Enter email ID"formControlName="email">
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-center">
+                            <button id="submit" name="submit" class="btn btn-default">Update</button>
+                        </div>
+                    </div>
+            </form>   
+            </div>
+            
+        </div>
+  </div>
+
+</div>
