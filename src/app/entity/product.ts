@@ -5,7 +5,7 @@ export class Product {
     productID:string
     category:Category
     productName:String
-    images:string
+    images:any
     info:String
     likes:number
     views:number

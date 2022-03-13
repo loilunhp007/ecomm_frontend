@@ -267,18 +267,7 @@ export class QlSanphamComponent implements OnInit {
         this.product.special_from_time=this.AProductFromDate.value
         this.product.special_to_time = this.AProductToDate.value;
         this.product.info = this.AProductInfo.value+'';
-        this.product.images = "["
-        for(let j=0;j<this.imageName.length;j++){
-          if(j==(this.imageName.length-1)){
-            this.product.images+="'"+this.imageName[j]+"'"
-          }
-          else{
-            this.product.images+="'"+this.imageName[j]+"'"+","
-          }
-         
-        }
-
-        this.product.images+="]"
+        this.product.images = this.imageName;
         this.product.category = cate;
           if(this.product.special_from_time>this.product.special_to_time&&(this.product.special_from_time <= date)&&this.product.special_to_time<=date){
             alert("ngày bắt đầu phải lớn hơn ngày kết thúc");
@@ -447,25 +436,12 @@ export class QlSanphamComponent implements OnInit {
                     i++;
                   })
                   if(this.files2.length>1){
-                  product2.images = "["
-                  for(let j=0;j<this.imageName2.length;j++){
-                    if(j==(this.imageName2.length-1)){
-                      product2.images+="'"+this.imageName2[j]+"'"
-                    }
-                    else{
-                      product2.images+="'"+this.imageName2[j]+"'"+","
-                    }
-                  
-                  }
-
-                  product2.images+="]"  
+                  product2.images = this.imageName2  
               }
               else{
-                if(this.imageName2.length==1){
-                  product2.images = "["+"'"+this.imageName2[0]+"'"+"]"
-                }
+                
               }
-              this.httpClient.post('http://localhost:8090/products/upload',uploadData2,{ observe : "response"}).subscribe(
+              this.httpClient.post('https://be-ecommerce-2.herokuapp.com/products/upload',uploadData2,{ observe : "response"}).subscribe(
                 (Response)=>{
                   if(Response.status === 200){
                     this.productService.updateProduct(product2).subscribe(
