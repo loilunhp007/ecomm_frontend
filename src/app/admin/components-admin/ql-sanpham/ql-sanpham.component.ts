@@ -284,7 +284,7 @@ export class QlSanphamComponent implements OnInit {
             alert("ngày bắt đầu phải lớn hơn ngày kết thúc");
           }
           else{
-            this.httpClient.post('http://localhost:8090/products/upload',uploadData,{ observe : "response"}).subscribe(
+            this.httpClient.post('https://be-ecommerce-2.herokuapp.com/products/upload',uploadData,{ observe : "response"}).subscribe(
               (Response)=>{
                 if(Response.status === 200){
                   this.productService.addProduct(this.product).subscribe(
