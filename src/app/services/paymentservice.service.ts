@@ -10,12 +10,12 @@ export class PaymentserviceService {
 
   constructor(private httpClient:HttpClient) { }
   getAllPaymentMethod():Observable<any>{
-    return this.httpClient.get<PaymentMethod[]>("http://localhost:8090/paymentmethod/get");
+    return this.httpClient.get<PaymentMethod[]>("https://be-ecommerce-2.herokuapp.com/paymentmethod/get");
   }
   addPayment(payment:PaymentMethod):Observable<any>{
-    return this.httpClient.post<PaymentMethod>("http://localhost:8090/paymentmethod/add",payment)
+    return this.httpClient.post<PaymentMethod>("https://be-ecommerce-2.herokuapp.com/paymentmethod/add",payment)
   }
   getPaymentMethodByID(id:number):Observable<any>{
-    return this.httpClient.get<PaymentMethod[]>("http://localhost:8090/paymentmethod/get/"+id);
+    return this.httpClient.get<PaymentMethod[]>("https://be-ecommerce-2.herokuapp.com/paymentmethod/get/"+id);
   }
 }

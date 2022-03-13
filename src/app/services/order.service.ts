@@ -10,18 +10,18 @@ export class OrderService {
 
   constructor(private httpClient:HttpClient) { }
   getAllOrder():Observable<any>{
-    return this.httpClient.get<Order[]>('http://localhost:8090/order/get/');
+    return this.httpClient.get<Order[]>('https://be-ecommerce-2.herokuapp.com/order/get/');
   }
   getAllOrderByTvmua(uID:string):Observable<any>{
-    return this.httpClient.get<Order>('http://localhost:8090/order/get/user/'+uID);
+    return this.httpClient.get<Order>('https://be-ecommerce-2.herokuapp.com/order/get/user/'+uID);
   }
   getOrderById(orderID:string):Observable<any>{
-    return this.httpClient.get<Order>('http://localhost:8090/order/get/'+orderID)
+    return this.httpClient.get<Order>('https://be-ecommerce-2.herokuapp.com/order/get/'+orderID)
   }
    addOrder(order:Order):Observable<any>{
-    return this.httpClient.post<Order>('http://localhost:8090/order/add',order);
+    return this.httpClient.post<Order>('https://be-ecommerce-2.herokuapp.com/order/add',order);
   }
    updateOrderStatus(orderID:String,state:number):Observable<any>{
-    return this.httpClient.put<Order>('http://localhost:8090/order/put/'+orderID+'/'+state,null);
+    return this.httpClient.put<Order>('https://be-ecommerce-2.herokuapp.com/order/put/'+orderID+'/'+state,null);
   }
 }

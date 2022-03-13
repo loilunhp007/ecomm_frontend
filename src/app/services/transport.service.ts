@@ -10,12 +10,12 @@ export class TransportService {
 
   constructor(private httpClient:HttpClient) { }
   getShipping():Observable<any>{
-    return this.httpClient.get<Transport[]>('http://localhost:8090/transport/get')
+    return this.httpClient.get<Transport[]>('https://be-ecommerce-2.herokuapp.com/transport/get')
   }
   getShippingById(tid:String):Observable<any>{
-    return this.httpClient.get<Transport>('http://localhost:8090/transport/get/'+tid)
+    return this.httpClient.get<Transport>('https://be-ecommerce-2.herokuapp.com/transport/get/'+tid)
   }
   addTransport(transport:Transport):Observable<any>{
-    return this.httpClient.post<Transport>('http://localhost:8090/transport/add',transport)
+    return this.httpClient.post<Transport>('https://be-ecommerce-2.herokuapp.com/transport/add',transport)
   }
 }

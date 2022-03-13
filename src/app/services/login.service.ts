@@ -12,7 +12,7 @@ export class LoginService {
 
   login(account: Account): Observable<any>{
 
-    return this.httpClient.post<Account>("http://localhost:8090/user/login", account);
+    return this.httpClient.post<Account>("https://be-ecommerce-2.herokuapp.com/user/login", account);
   }
   isLogged(){
     let sesson = JSON.parse(sessionStorage.getItem("uid"));

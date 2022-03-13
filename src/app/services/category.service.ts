@@ -10,15 +10,15 @@ export class CategoryService {
 
   constructor(private httpClient:HttpClient) { }
   getCategories(){
-    return this.httpClient.get<Category[]>("http://localhost:8090/category/get");
+    return this.httpClient.get<Category[]>("https://be-ecommerce-2.herokuapp.com/category/get");
   }
   addCategory(category:Category): Observable<any>{
-    return this.httpClient.post<Category>("http://localhost:8090/category/add",category);
+    return this.httpClient.post<Category>("https://be-ecommerce-2.herokuapp.com/category/add",category);
   }
   updateCategory(category:Category){
-    return this.httpClient.put<Category>("http://localhost:8090/category/put/"+category.cateID,category);
+    return this.httpClient.put<Category>("https://be-ecommerce-2.herokuapp.com/category/put/"+category.cateID,category);
   }
   deleteCategory(id:number):Observable<any>{
-    return this.httpClient.delete<Category>("http://localhost:8090/category/delete/"+id);
+    return this.httpClient.delete<Category>("https://be-ecommerce-2.herokuapp.com/category/delete/"+id);
   }
 }
