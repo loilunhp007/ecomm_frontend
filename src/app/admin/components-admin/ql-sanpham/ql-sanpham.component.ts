@@ -436,7 +436,7 @@ export class QlSanphamComponent implements OnInit {
                     i++;
                   })
                   if(this.files2.length>1){
-                  product2.images = this.imageName2  
+                  product2.images = this.imageName2;  
               }
               else{
                 
@@ -459,21 +459,6 @@ export class QlSanphamComponent implements OnInit {
                   }
               })
             }else{
-              let k:any = [];
-              k=product2.imagesArray;
-              let imag:Array<string> = k;
-             product2.images = "["
-             for(let j=0;j<imag.length;j++){
-               if(j==(imag.length-1)){
-                 product2.images+="'"+imag[j]+"'"
-               }
-               else{
-                 product2.images+="'"+imag[j]+"'"+","
-               }
-             
-             }
-         
-             product2.images+="]"  
              console.log(product2.percent_discount)
               this.productService.updateProduct(product2).subscribe(
                 Response=>{
@@ -498,24 +483,8 @@ export class QlSanphamComponent implements OnInit {
   }
   //update product end
   statusProduct(product:Product){
-    let k:any = [];
-     k=product.imagesArray;
-     let imag:Array<string> = k;
-    product.images = "["
-    for(let j=0;j<imag.length;j++){
-      if(j==(imag.length-1)){
-        product.images+="'"+imag[j]+"'"
-      }
-      else{
-        product.images+="'"+imag[j]+"'"+","
-      }
-    
-    }
-
-    product.images+="]"  
         if(product.state == 1){
           product.state=0
-          
          
            // product.images = "["+"'"+imgName+"'"+"]"
           this.productService.updateProduct(product).subscribe(
